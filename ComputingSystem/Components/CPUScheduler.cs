@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Queues;
 
-namespace ComputingSystem
+namespace ComputingSystem.Components
 {
     class CPUScheduler
     {

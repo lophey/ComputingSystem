@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace ComputingSystem
+namespace ComputingSystem.Components
 {
     public class SystemClock : INotifyPropertyChanged
     {
@@ -38,5 +38,5 @@ namespace ComputingSystem
                 PropertyChanged(this, new PropertyChangedEventArgs(property));
         }
     }
-    
+
 }

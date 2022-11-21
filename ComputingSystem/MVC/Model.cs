@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using ComputingSystem.Components;
 using Queues;
 using Structures;
 
-namespace ComputingSystem
+namespace ComputingSystem.MVC
 {
     public class Model : INotifyPropertyChanged
     {
@@ -39,9 +40,9 @@ namespace ComputingSystem
             {
                 Process proc = new Process(idGen.Id,
                     processRand.Next(ModelSettings.MinValueOfAddrSpace, ModelSettings.MaxValueOfAddrSpace + 1));
-               if (memoryManager.Allocate(proc) != null)
-               {
-                    
+                if (memoryManager.Allocate(proc) != null)
+                {
+
                     proc.BurstTime = processRand.Next(ModelSettings.MinValueOfBurstTime,
                         ModelSettings.MaxValueOfBurstTime + 1);
                     subscribe(proc);

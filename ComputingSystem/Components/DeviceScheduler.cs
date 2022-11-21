@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 using Queues;
 
-namespace ComputingSystem
+namespace ComputingSystem.Components
 {
     class DeviceScheduler
     {
         public DeviceScheduler(Resource resource, IQueueable<Process> queue)
         {
-            this.resourсe = resource;
+            resourсe = resource;
             this.queue = queue;
         }
 

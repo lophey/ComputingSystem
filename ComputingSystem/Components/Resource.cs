@@ -4,7 +4,7 @@ using System.Text;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace ComputingSystem
+namespace ComputingSystem.Components
 {
     public class Resource : INotifyPropertyChanged
     {
@@ -37,7 +37,7 @@ namespace ComputingSystem
                 activeProcess = value;
                 OnPropertyChanged();
             }
-            
+
         }
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string property = null)

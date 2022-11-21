@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ComputingSystem
+namespace ComputingSystem.Components
 {
     class MemoryManager
     {

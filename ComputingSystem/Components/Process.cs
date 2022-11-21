@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Xml.Linq;
 
-namespace ComputingSystem
+namespace ComputingSystem.Components
 {
     public enum ProcessStatus
     {
@@ -42,7 +42,7 @@ namespace ComputingSystem
             }
             else
             {
-                if(Status == ProcessStatus.running)
+                if (Status == ProcessStatus.running)
                 {
                     Status = ProcessStatus.waiting;
                 }
@@ -79,7 +79,7 @@ namespace ComputingSystem
 
 
         public long BurstTime { get; set; }
-    
+
         public ProcessStatus Status { get; set; }
 
         public long AddrSpace { get; private set; }
