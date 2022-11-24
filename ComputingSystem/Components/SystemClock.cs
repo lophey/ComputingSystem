@@ -10,7 +10,7 @@ namespace ComputingSystem.Components
     {
         public void WorkingCycle()
         {
-            clock++;
+            Clock++;
         }
 
         public void Clear()

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
 using ComputingSystem.MVC;
+using Timer = System.Windows.Forms.Timer;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace ComputingSystem
@@ -18,36 +19,27 @@ namespace ComputingSystem
     public partial class FrmDetailed : Form
     {
         private readonly ViewDetailed viewDetailed;
-        private bool AutoWork;
+       // private bool AutoWork;
         public FrmDetailed()
         {
             InitializeComponent();
             var model = new Model();
-            AutoWork = false;
+            //AutoWork = false;
             viewDetailed = new ViewDetailed(model, new Controller(), this);
             viewDetailed.DataBind();
-            //Prepare();
         }
-        private void Prepare()
-        {
-            UpdateSettings();
-            save.Enabled = true;
-            end.Enabled = false;
-            workingCycle.Enabled = false;
-            pnlSettings.Enabled = true;
-        }
-
         private void workingCycle_Click(object sender, EventArgs e)
         {
             viewDetailed.ReactToUserActions(ModelOperations.WorkingCycle);
         }
-        public Label LblTime
-        {
-            get { return lblTime; }
-        }
+        public Label LblTime => lblTime;
 
         private void end_Click(object sender, EventArgs e)
         {
+            if (autoMode.Checked)
+            {
+                timer.Enabled = false;
+            }
             viewDetailed.ReactToUserActions(ModelOperations.EndOfSession);
             endOfSession();
             UpdateSettings();
@@ -64,6 +56,15 @@ namespace ComputingSystem
         {
             SessionPreparation();
             viewDetailed.ReactToUserActions(ModelOperations.SaveSettings);
+            if (autoMode.Checked)
+            {
+                timer = new Timer
+                {
+                    Enabled = true,
+                    Interval = 700
+                };
+                timer.Tick += workingCycle_Click;
+            }
         }
 
         private void SessionPreparation()
@@ -72,7 +73,7 @@ namespace ComputingSystem
             end.Enabled = true;
             workingCycle.Enabled = manualMode.Checked;
             pnlSettings.Enabled = false;
-            AutoWork = true;
+            //AutoWork = true;
         }
         private void endOfSession()
         {
@@ -80,7 +81,7 @@ namespace ComputingSystem
             save.Enabled = true;
             workingCycle.Enabled = false;
             pnlSettings.Enabled = true;
-            AutoWork = false;
+            //AutoWork = false;
         }
         private void UpdateSettings()
         {
@@ -92,10 +93,11 @@ namespace ComputingSystem
             RAM.SelectedItem = RAM.Items[0];
         }
 
-        private void timer_Tick(object sender, EventArgs e)
+        /*private void timer_Tick(object sender, EventArgs e)
         {
             if (autoMode.Checked && AutoWork)
                 viewDetailed.ReactToUserActions(ModelOperations.WorkingCycle);
-        }
+        }*/
+
     }
 }

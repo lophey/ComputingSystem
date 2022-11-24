@@ -18,7 +18,7 @@ namespace ComputingSystem.MVC
             frm.DeviceText.DataBindings.Add(new Binding("Text", model.device, "ActiveProcess"));
             frm.occupiedSize.DataBindings.Add(new Binding("Text", model.ram, "OccupiedSize"));
             frm.freeSize.DataBindings.Add(new Binding("Text", model.ram, "FreeSize"));
-            frm.LblTime.DataBindings.Add(new Binding("Text", model.clock, "Clock"));
+            frm.LblTime.DataBindings.Add(new Binding("Text", model.Clock, "Clock"));
 
             Binding intensityBinding = new Binding("Value", model.ModelSettings, "Intensity");
             intensityBinding.ControlUpdateMode = ControlUpdateMode.Never;
@@ -44,6 +44,10 @@ namespace ComputingSystem.MVC
             RAM.ControlUpdateMode = ControlUpdateMode.Never;
             frm.RAM.DataBindings.Add(RAM);
 
+            frm.CPUUtilization.DataBindings.Add(new Binding("Text", model.statistics, "CpuUtilization", true, DataSourceUpdateMode.Never, null, "#0.##%"));
+
+            frm.lblThroughput.DataBindings.Add(new Binding("Text", model.statistics, "Throughput", true, DataSourceUpdateMode.Never, null, "#0.##%"));
+
             Subscribe();
         }
         public override void DataUnbind()
@@ -53,11 +57,15 @@ namespace ComputingSystem.MVC
             frm.occupiedSize.DataBindings.RemoveAt(0);
             frm.freeSize.DataBindings.RemoveAt(0);
             frm.LblTime.DataBindings.RemoveAt(0);
+            frm.CPUUtilization.DataBindings.RemoveAt(0);
+            frm.lblThroughput.DataBindings.RemoveAt(0);
             frm.intensity.DataBindings.RemoveAt(0);
             frm.minCPU.DataBindings.RemoveAt(0);
             frm.maxCPU.DataBindings.RemoveAt(0);
             frm.minSize.DataBindings.RemoveAt(0);
             frm.maxSize.DataBindings.RemoveAt(0);
+            frm.queueToCPU.DataBindings.RemoveAt(0);
+            frm.queueToDevice.DataBindings.RemoveAt(0);
             frm.RAM.DataBindings.Clear();
 
             Unsubscribe();

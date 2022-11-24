@@ -35,7 +35,6 @@ namespace ComputingSystem
             this.save = new System.Windows.Forms.Button();
             this.workingCycle = new System.Windows.Forms.Button();
             this.end = new System.Windows.Forms.Button();
-            this.statistics = new System.Windows.Forms.Button();
             this.manualMode = new System.Windows.Forms.RadioButton();
             this.autoMode = new System.Windows.Forms.RadioButton();
             this.freeSize = new System.Windows.Forms.TextBox();
@@ -78,6 +77,10 @@ namespace ComputingSystem
             this.queueToDevice = new System.Windows.Forms.ListBox();
             this.pnlSettings = new System.Windows.Forms.Panel();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.CPUUtilization = new System.Windows.Forms.Label();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.lblThroughput = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.intensity)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -96,6 +99,8 @@ namespace ComputingSystem
             this.groupBox11.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.pnlSettings.SuspendLayout();
+            this.groupBox14.SuspendLayout();
+            this.groupBox15.SuspendLayout();
             this.SuspendLayout();
             // 
             // CPUText
@@ -116,7 +121,7 @@ namespace ComputingSystem
             // 
             // save
             // 
-            this.save.Location = new System.Drawing.Point(333, 13);
+            this.save.Location = new System.Drawing.Point(456, 452);
             this.save.Name = "save";
             this.save.Size = new System.Drawing.Size(109, 43);
             this.save.TabIndex = 11;
@@ -126,7 +131,7 @@ namespace ComputingSystem
             // 
             // workingCycle
             // 
-            this.workingCycle.Location = new System.Drawing.Point(444, 13);
+            this.workingCycle.Location = new System.Drawing.Point(567, 452);
             this.workingCycle.Name = "workingCycle";
             this.workingCycle.Size = new System.Drawing.Size(109, 43);
             this.workingCycle.TabIndex = 12;
@@ -136,22 +141,13 @@ namespace ComputingSystem
             // 
             // end
             // 
-            this.end.Location = new System.Drawing.Point(555, 13);
+            this.end.Location = new System.Drawing.Point(678, 452);
             this.end.Name = "end";
             this.end.Size = new System.Drawing.Size(109, 43);
             this.end.TabIndex = 13;
             this.end.Text = "Завершение сеанса";
             this.end.UseVisualStyleBackColor = true;
             this.end.Click += new System.EventHandler(this.end_Click);
-            // 
-            // statistics
-            // 
-            this.statistics.Location = new System.Drawing.Point(666, 13);
-            this.statistics.Name = "statistics";
-            this.statistics.Size = new System.Drawing.Size(109, 43);
-            this.statistics.TabIndex = 14;
-            this.statistics.Text = "Статистика";
-            this.statistics.UseVisualStyleBackColor = true;
             // 
             // manualMode
             // 
@@ -334,7 +330,7 @@ namespace ComputingSystem
             1,
             0,
             0,
-            65536});
+            0});
             // 
             // groupBox2
             // 
@@ -495,20 +491,17 @@ namespace ComputingSystem
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.lblTime);
-            this.groupBox8.Controls.Add(this.statistics);
-            this.groupBox8.Controls.Add(this.end);
-            this.groupBox8.Controls.Add(this.workingCycle);
-            this.groupBox8.Controls.Add(this.save);
-            this.groupBox8.Location = new System.Drawing.Point(10, 444);
+            this.groupBox8.Location = new System.Drawing.Point(349, 452);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(779, 65);
+            this.groupBox8.Size = new System.Drawing.Size(59, 43);
             this.groupBox8.TabIndex = 41;
             this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Такты";
             // 
             // lblTime
             // 
             this.lblTime.AutoSize = true;
-            this.lblTime.Location = new System.Drawing.Point(25, 27);
+            this.lblTime.Location = new System.Drawing.Point(22, 19);
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(13, 15);
             this.lblTime.TabIndex = 34;
@@ -602,14 +595,56 @@ namespace ComputingSystem
             // 
             this.timer.Enabled = true;
             this.timer.Interval = 700;
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // groupBox14
+            // 
+            this.groupBox14.Controls.Add(this.CPUUtilization);
+            this.groupBox14.Location = new System.Drawing.Point(11, 452);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(183, 43);
+            this.groupBox14.TabIndex = 46;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "Загруженность процессора";
+            // 
+            // CPUUtilization
+            // 
+            this.CPUUtilization.AutoSize = true;
+            this.CPUUtilization.Location = new System.Drawing.Point(8, 19);
+            this.CPUUtilization.Name = "CPUUtilization";
+            this.CPUUtilization.Size = new System.Drawing.Size(13, 15);
+            this.CPUUtilization.TabIndex = 0;
+            this.CPUUtilization.Text = "0";
+            // 
+            // groupBox15
+            // 
+            this.groupBox15.Controls.Add(this.lblThroughput);
+            this.groupBox15.Location = new System.Drawing.Point(200, 452);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(143, 43);
+            this.groupBox15.TabIndex = 47;
+            this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "Производительность";
+            // 
+            // lblThroughput
+            // 
+            this.lblThroughput.AutoSize = true;
+            this.lblThroughput.Location = new System.Drawing.Point(8, 19);
+            this.lblThroughput.Name = "lblThroughput";
+            this.lblThroughput.Size = new System.Drawing.Size(13, 15);
+            this.lblThroughput.TabIndex = 0;
+            this.lblThroughput.Text = "0";
             // 
             // FrmDetailed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(795, 518);
+            this.ClientSize = new System.Drawing.Size(795, 509);
+            this.Controls.Add(this.groupBox15);
+            this.Controls.Add(this.end);
+            this.Controls.Add(this.groupBox14);
+            this.Controls.Add(this.workingCycle);
             this.Controls.Add(this.pnlSettings);
+            this.Controls.Add(this.save);
             this.Controls.Add(this.groupBox12);
             this.Controls.Add(this.groupBox11);
             this.Controls.Add(this.groupBox10);
@@ -641,6 +676,10 @@ namespace ComputingSystem
             this.groupBox12.ResumeLayout(false);
             this.pnlSettings.ResumeLayout(false);
             this.pnlSettings.PerformLayout();
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox14.PerformLayout();
+            this.groupBox15.ResumeLayout(false);
+            this.groupBox15.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -651,7 +690,6 @@ namespace ComputingSystem
         public System.Windows.Forms.Button save;
         public System.Windows.Forms.Button workingCycle;
         public System.Windows.Forms.Button end;
-        public System.Windows.Forms.Button statistics;
         public System.Windows.Forms.RadioButton autoMode;
         public System.Windows.Forms.TextBox freeSize;
         public System.Windows.Forms.TextBox occupiedSize;
@@ -690,10 +728,14 @@ namespace ComputingSystem
         public System.Windows.Forms.NumericUpDown maxCPU;
         public System.Windows.Forms.NumericUpDown minSize;
         public System.Windows.Forms.NumericUpDown maxSize;
-        public System.Windows.Forms.Label lblTime;
+        private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Panel pnlSettings;
         private System.Windows.Forms.RadioButton manualMode;
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.GroupBox groupBox14;
+        public System.Windows.Forms.Label CPUUtilization;
+        private System.Windows.Forms.GroupBox groupBox15;
+        public System.Windows.Forms.Label lblThroughput;
     }
 }
 

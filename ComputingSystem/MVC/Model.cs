@@ -14,7 +14,7 @@ namespace ComputingSystem.MVC
     {
         public Model()
         {
-            clock = new SystemClock();
+            Clock = new SystemClock();
             deviceQueue = new FIFOQueue<Process, SimpleArray<Process>>(new SimpleArray<Process>());
             readyQueue = new PriorityQueue<Process, BinaryHeap<Process>>(new BinaryHeap<Process>());
             ModelSettings = new Settings();
@@ -26,6 +26,7 @@ namespace ComputingSystem.MVC
             deviceScheduler = new DeviceScheduler(device, deviceQueue);
             memoryManager = new MemoryManager();
             ram = new Memory();
+            statistics = new Statistics(Clock);
         }
 
         public void SaveSettings()
@@ -35,21 +36,22 @@ namespace ComputingSystem.MVC
         }
         public void WorkingCycle()
         {
-            clock.WorkingCycle();
+            Clock.WorkingCycle();
             if (processRand.NextDouble() < ModelSettings.Intensity)
             {
                 Process proc = new Process(idGen.Id,
                     processRand.Next(ModelSettings.MinValueOfAddrSpace, ModelSettings.MaxValueOfAddrSpace + 1));
                 if (memoryManager.Allocate(proc) != null)
                 {
-
                     proc.BurstTime = processRand.Next(ModelSettings.MinValueOfBurstTime,
                         ModelSettings.MaxValueOfBurstTime + 1);
                     subscribe(proc);
                     readyQueue = readyQueue.Put(proc);
+                    statistics.IncArrivalProcCount();
                     if (cpu.IsFree())
                     {
                         readyQueue = cpuScheduler.Session();
+                        statistics.IncCPUFreeTime();
                     }
                 }
             }
@@ -60,12 +62,13 @@ namespace ComputingSystem.MVC
         public void Clear()
         {
             idGen.Clear();
-            clock.Clear();
+            Clock.Clear();
             cpu.Clear();
             device.Clear();
             ram.Clear();
             readyQueue.Clear();
             deviceQueue.Clear();
+            statistics.Clear();
         }
 
         private void FreeingResourceEventHandler(object sender, EventArgs e)
@@ -106,7 +109,7 @@ namespace ComputingSystem.MVC
                     proc.BurstTime = processRand.Next(ModelSettings.MinValueOfBurstTime,
                         ModelSettings.MaxValueOfBurstTime + 1);
                     proc.ResetWorkTime();
-
+                    statistics.IncTerminatedProcCount(); //прикол
                     DeviceQueue = DeviceQueue.Put(proc);
                     if (device.IsFree())
                     {
@@ -143,7 +146,8 @@ namespace ComputingSystem.MVC
                 PropertyChanged(this, new PropertyChangedEventArgs(property));
         }
 
-        public SystemClock clock { get; private set; }
+        public readonly Statistics statistics;
+        public readonly SystemClock Clock;
         public readonly Resource cpu;//
         public readonly Resource device;//
         private readonly IdGenerator idGen;
