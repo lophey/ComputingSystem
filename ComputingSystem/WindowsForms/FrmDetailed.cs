@@ -19,12 +19,11 @@ namespace ComputingSystem
     public partial class FrmDetailed : Form
     {
         private readonly ViewDetailed viewDetailed;
-       // private bool AutoWork;
         public FrmDetailed()
         {
             InitializeComponent();
             var model = new Model();
-            //AutoWork = false;
+            RAM.SelectedItem = RAM.Items[0];
             viewDetailed = new ViewDetailed(model, new Controller(), this);
             viewDetailed.DataBind();
         }
@@ -43,7 +42,6 @@ namespace ComputingSystem
             viewDetailed.ReactToUserActions(ModelOperations.EndOfSession);
             endOfSession();
             UpdateSettings();
-
         }
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged()
@@ -73,7 +71,6 @@ namespace ComputingSystem
             end.Enabled = true;
             workingCycle.Enabled = manualMode.Checked;
             pnlSettings.Enabled = false;
-            //AutoWork = true;
         }
         private void endOfSession()
         {
@@ -81,7 +78,12 @@ namespace ComputingSystem
             save.Enabled = true;
             workingCycle.Enabled = false;
             pnlSettings.Enabled = true;
-            //AutoWork = false;
+            CPUText.Text = "";
+            queueToCPU.Text = "";
+            DeviceText.Text = "";
+            DeviceText2.Text = "";
+            DeviceText3.Text = "";
+            //lblThroughput.Text = "";
         }
         private void UpdateSettings()
         {
@@ -90,7 +92,6 @@ namespace ComputingSystem
             maxCPU.Value = maxCPU.Minimum;
             minSize.Value = minSize.Minimum;
             maxSize.Value = maxSize.Minimum;
-            RAM.SelectedItem = RAM.Items[0];
         }
 
         /*private void timer_Tick(object sender, EventArgs e)

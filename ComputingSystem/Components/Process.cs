@@ -45,12 +45,18 @@ namespace ComputingSystem.Components
                 if (Status == ProcessStatus.running)
                 {
                     Status = ProcessStatus.waiting;
+                    if(Status == ProcessStatus.waiting)
+                    {
+                        device.Device = (int)resourceRand.Next(1, 4);
+                        OnFreeingAResource(device);
+                        return;
+                    }
                 }
                 else
                 {
                     Status = ProcessStatus.ready;
                 }
-                OnFreeingAResource();
+                OnFreeingAResource(device);
             }
         }
 
@@ -69,11 +75,11 @@ namespace ComputingSystem.Components
         }
 
         public event EventHandler FreeingAResource;
-        private void OnFreeingAResource()
+        private void OnFreeingAResource(EventArgs e = null)
         {
             if (FreeingAResource != null)
             {
-                FreeingAResource(this, null);
+                FreeingAResource(this, e);
             }
         }
 
@@ -87,6 +93,7 @@ namespace ComputingSystem.Components
         private long id;
         private string name;
         private long workTime;
-        private Random resourceRand;
+        private Random resourceRand = new Random();
+        DeviceEventArgs device = new DeviceEventArgs();
     }
 }

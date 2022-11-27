@@ -15,7 +15,10 @@ namespace ComputingSystem.MVC
         public override void DataBind()
         {
             frm.CPUText.DataBindings.Add(new Binding("Text", model.cpu, "ActiveProcess"));
-            frm.DeviceText.DataBindings.Add(new Binding("Text", model.device, "ActiveProcess"));
+            frm.DeviceText.DataBindings.Add(new Binding("Text", model.device1, "ActiveProcess"));
+            frm.DeviceText2.DataBindings.Add(new Binding("Text", model.device2, "ActiveProcess"));
+            frm.DeviceText3.DataBindings.Add(new Binding("Text", model.device3, "ActiveProcess"));
+
             frm.occupiedSize.DataBindings.Add(new Binding("Text", model.ram, "OccupiedSize"));
             frm.freeSize.DataBindings.Add(new Binding("Text", model.ram, "FreeSize"));
             frm.LblTime.DataBindings.Add(new Binding("Text", model.Clock, "Clock"));
@@ -54,6 +57,8 @@ namespace ComputingSystem.MVC
         {
             frm.CPUText.DataBindings.RemoveAt(0);
             frm.DeviceText.DataBindings.RemoveAt(0);
+            frm.DeviceText2.DataBindings.RemoveAt(0);
+            frm.DeviceText3.DataBindings.RemoveAt(0);
             frm.occupiedSize.DataBindings.RemoveAt(0);
             frm.freeSize.DataBindings.RemoveAt(0);
             frm.LblTime.DataBindings.RemoveAt(0);
@@ -66,6 +71,8 @@ namespace ComputingSystem.MVC
             frm.maxSize.DataBindings.RemoveAt(0);
             frm.queueToCPU.DataBindings.RemoveAt(0);
             frm.queueToDevice.DataBindings.RemoveAt(0);
+            frm.queueToDevice2.DataBindings.RemoveAt(0);
+            frm.queueToDevice3.DataBindings.RemoveAt(0);
             frm.RAM.DataBindings.Clear();
 
             Unsubscribe();
@@ -92,7 +99,9 @@ namespace ComputingSystem.MVC
             }
             else if (e.PropertyName == "DeviceQueue")
             {
-                updateListBox(model.DeviceQueue, frm.queueToDevice);
+                updateListBox(model.DeviceQueue1, frm.queueToDevice);
+                updateListBox(model.DeviceQueue2, frm.queueToDevice2);
+                updateListBox(model.DeviceQueue3, frm.queueToDevice3);
             }
         }
 

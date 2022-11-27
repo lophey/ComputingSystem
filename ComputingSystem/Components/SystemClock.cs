@@ -15,7 +15,7 @@ namespace ComputingSystem.Components
 
         public void Clear()
         {
-            clock = 0;
+            Clock = 0;
         }
 
         public long Clock

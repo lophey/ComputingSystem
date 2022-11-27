@@ -18,6 +18,7 @@ namespace ComputingSystem.Components
             ArrivalProcessesCount = 0;
             CpuFreeTime = 0;
             CpuUtilization = 0;
+            Throughput = 0;
         }
         public void IncCPUFreeTime()
         {
@@ -29,13 +30,27 @@ namespace ComputingSystem.Components
         }
         public long ArrivalProcessesCount
         {
-            get;
-            private set;
+            get
+            {
+                return arrivalProcessesCount;
+            }
+            set
+            {
+                arrivalProcessesCount = value;
+                OnPropertyChanged();
+            }
         }
         public long CpuFreeTime
         {
-            get;
-            private set;
+            get
+            {
+                return cpuFreeTime;
+            }
+            set
+            {
+                cpuFreeTime = value;
+                OnPropertyChanged();
+            }
         }
         public double CpuUtilization
         {
@@ -51,6 +66,10 @@ namespace ComputingSystem.Components
         }
         private SystemClock commonTime;
         private double cpuUtilization;
+        private long terminatedProcessesCount;
+        private long arrivalProcessesCount;
+        private long cpuFreeTime;
+        private double throughput;
         // издатель
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -77,11 +96,17 @@ namespace ComputingSystem.Components
                 
             }
         }
-        private double throughput;
         public long TerminatedProcessesCount
         {
-            get;
-            private set;
+            get
+            {
+                return terminatedProcessesCount;
+            }
+            set
+            {
+                terminatedProcessesCount = value;
+                OnPropertyChanged();
+            }
         }
         public double Throughput
         {

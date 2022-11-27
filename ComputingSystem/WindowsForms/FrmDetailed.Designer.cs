@@ -30,6 +30,7 @@ namespace ComputingSystem
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDetailed));
             this.CPUText = new System.Windows.Forms.TextBox();
             this.DeviceText = new System.Windows.Forms.TextBox();
             this.save = new System.Windows.Forms.Button();
@@ -76,11 +77,24 @@ namespace ComputingSystem
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.queueToDevice = new System.Windows.Forms.ListBox();
             this.pnlSettings = new System.Windows.Forms.Panel();
-            this.timer = new System.Windows.Forms.Timer(this.components);
-            this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.CPUUtilization = new System.Windows.Forms.Label();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.lblThroughput = new System.Windows.Forms.Label();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.CPUUtilization = new System.Windows.Forms.Label();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.queueToDevice2 = new System.Windows.Forms.ListBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.DeviceText2 = new System.Windows.Forms.TextBox();
+            this.groupBox18 = new System.Windows.Forms.GroupBox();
+            this.queueToDevice3 = new System.Windows.Forms.ListBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.groupBox19 = new System.Windows.Forms.GroupBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.DeviceText3 = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.intensity)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -99,13 +113,18 @@ namespace ComputingSystem
             this.groupBox11.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.pnlSettings.SuspendLayout();
-            this.groupBox14.SuspendLayout();
             this.groupBox15.SuspendLayout();
+            this.groupBox14.SuspendLayout();
+            this.groupBox16.SuspendLayout();
+            this.groupBox17.SuspendLayout();
+            this.groupBox18.SuspendLayout();
+            this.groupBox19.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // CPUText
             // 
-            this.CPUText.Location = new System.Drawing.Point(4, 22);
+            this.CPUText.Location = new System.Drawing.Point(4, 20);
             this.CPUText.Name = "CPUText";
             this.CPUText.ReadOnly = true;
             this.CPUText.Size = new System.Drawing.Size(378, 23);
@@ -113,7 +132,7 @@ namespace ComputingSystem
             // 
             // DeviceText
             // 
-            this.DeviceText.Location = new System.Drawing.Point(4, 22);
+            this.DeviceText.Location = new System.Drawing.Point(4, 20);
             this.DeviceText.Name = "DeviceText";
             this.DeviceText.ReadOnly = true;
             this.DeviceText.Size = new System.Drawing.Size(378, 23);
@@ -121,7 +140,7 @@ namespace ComputingSystem
             // 
             // save
             // 
-            this.save.Location = new System.Drawing.Point(456, 452);
+            this.save.Location = new System.Drawing.Point(404, 461);
             this.save.Name = "save";
             this.save.Size = new System.Drawing.Size(109, 43);
             this.save.TabIndex = 11;
@@ -131,7 +150,7 @@ namespace ComputingSystem
             // 
             // workingCycle
             // 
-            this.workingCycle.Location = new System.Drawing.Point(567, 452);
+            this.workingCycle.Location = new System.Drawing.Point(515, 461);
             this.workingCycle.Name = "workingCycle";
             this.workingCycle.Size = new System.Drawing.Size(109, 43);
             this.workingCycle.TabIndex = 12;
@@ -141,7 +160,7 @@ namespace ComputingSystem
             // 
             // end
             // 
-            this.end.Location = new System.Drawing.Point(678, 452);
+            this.end.Location = new System.Drawing.Point(626, 461);
             this.end.Name = "end";
             this.end.Size = new System.Drawing.Size(109, 43);
             this.end.TabIndex = 13;
@@ -153,7 +172,7 @@ namespace ComputingSystem
             // 
             this.manualMode.AutoSize = true;
             this.manualMode.Checked = true;
-            this.manualMode.Location = new System.Drawing.Point(668, 106);
+            this.manualMode.Location = new System.Drawing.Point(604, 106);
             this.manualMode.Name = "manualMode";
             this.manualMode.Size = new System.Drawing.Size(66, 19);
             this.manualMode.TabIndex = 15;
@@ -164,7 +183,7 @@ namespace ComputingSystem
             // autoMode
             // 
             this.autoMode.AutoSize = true;
-            this.autoMode.Location = new System.Drawing.Point(668, 126);
+            this.autoMode.Location = new System.Drawing.Point(670, 106);
             this.autoMode.Name = "autoMode";
             this.autoMode.Size = new System.Drawing.Size(117, 19);
             this.autoMode.TabIndex = 16;
@@ -173,18 +192,18 @@ namespace ComputingSystem
             // 
             // freeSize
             // 
-            this.freeSize.Location = new System.Drawing.Point(178, 17);
+            this.freeSize.Location = new System.Drawing.Point(176, 18);
             this.freeSize.Name = "freeSize";
             this.freeSize.ReadOnly = true;
-            this.freeSize.Size = new System.Drawing.Size(206, 23);
+            this.freeSize.Size = new System.Drawing.Size(197, 23);
             this.freeSize.TabIndex = 18;
             // 
             // occupiedSize
             // 
-            this.occupiedSize.Location = new System.Drawing.Point(618, 17);
+            this.occupiedSize.Location = new System.Drawing.Point(233, 44);
             this.occupiedSize.Name = "occupiedSize";
             this.occupiedSize.ReadOnly = true;
-            this.occupiedSize.Size = new System.Drawing.Size(153, 23);
+            this.occupiedSize.Size = new System.Drawing.Size(140, 23);
             this.occupiedSize.TabIndex = 19;
             // 
             // label1
@@ -285,7 +304,7 @@ namespace ComputingSystem
             // 
             // label13
             // 
-            this.label13.Location = new System.Drawing.Point(394, 20);
+            this.label13.Location = new System.Drawing.Point(8, 47);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(218, 20);
             this.label13.TabIndex = 32;
@@ -293,7 +312,7 @@ namespace ComputingSystem
             // 
             // label14
             // 
-            this.label14.Location = new System.Drawing.Point(572, 108);
+            this.label14.Location = new System.Drawing.Point(507, 108);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(96, 19);
             this.label14.TabIndex = 33;
@@ -482,18 +501,18 @@ namespace ComputingSystem
             this.groupBox7.Controls.Add(this.label11);
             this.groupBox7.Controls.Add(this.occupiedSize);
             this.groupBox7.Controls.Add(this.freeSize);
-            this.groupBox7.Location = new System.Drawing.Point(10, 395);
+            this.groupBox7.Location = new System.Drawing.Point(12, 381);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(779, 49);
+            this.groupBox7.Size = new System.Drawing.Size(384, 74);
             this.groupBox7.TabIndex = 40;
             this.groupBox7.TabStop = false;
             // 
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.lblTime);
-            this.groupBox8.Location = new System.Drawing.Point(349, 452);
+            this.groupBox8.Location = new System.Drawing.Point(343, 466);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(59, 43);
+            this.groupBox8.Size = new System.Drawing.Size(53, 38);
             this.groupBox8.TabIndex = 41;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Такты";
@@ -511,7 +530,7 @@ namespace ComputingSystem
             // 
             this.groupBox9.Controls.Add(this.label8);
             this.groupBox9.Controls.Add(this.DeviceText);
-            this.groupBox9.Location = new System.Drawing.Point(404, 145);
+            this.groupBox9.Location = new System.Drawing.Point(404, 134);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(385, 50);
             this.groupBox9.TabIndex = 42;
@@ -522,7 +541,7 @@ namespace ComputingSystem
             this.groupBox10.Controls.Add(this.groupBox13);
             this.groupBox10.Controls.Add(this.label7);
             this.groupBox10.Controls.Add(this.CPUText);
-            this.groupBox10.Location = new System.Drawing.Point(11, 145);
+            this.groupBox10.Location = new System.Drawing.Point(11, 134);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(385, 50);
             this.groupBox10.TabIndex = 43;
@@ -541,9 +560,9 @@ namespace ComputingSystem
             // 
             this.groupBox11.Controls.Add(this.queueToCPU);
             this.groupBox11.Controls.Add(this.label9);
-            this.groupBox11.Location = new System.Drawing.Point(11, 199);
+            this.groupBox11.Location = new System.Drawing.Point(11, 188);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(385, 193);
+            this.groupBox11.Size = new System.Drawing.Size(384, 193);
             this.groupBox11.TabIndex = 44;
             this.groupBox11.TabStop = false;
             // 
@@ -551,7 +570,7 @@ namespace ComputingSystem
             // 
             this.queueToCPU.FormattingEnabled = true;
             this.queueToCPU.ItemHeight = 15;
-            this.queueToCPU.Location = new System.Drawing.Point(8, 25);
+            this.queueToCPU.Location = new System.Drawing.Point(6, 25);
             this.queueToCPU.Name = "queueToCPU";
             this.queueToCPU.Size = new System.Drawing.Size(372, 154);
             this.queueToCPU.TabIndex = 29;
@@ -560,9 +579,9 @@ namespace ComputingSystem
             // 
             this.groupBox12.Controls.Add(this.queueToDevice);
             this.groupBox12.Controls.Add(this.label10);
-            this.groupBox12.Location = new System.Drawing.Point(404, 199);
+            this.groupBox12.Location = new System.Drawing.Point(404, 188);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(385, 193);
+            this.groupBox12.Size = new System.Drawing.Size(385, 51);
             this.groupBox12.TabIndex = 45;
             this.groupBox12.TabStop = false;
             // 
@@ -570,9 +589,9 @@ namespace ComputingSystem
             // 
             this.queueToDevice.FormattingEnabled = true;
             this.queueToDevice.ItemHeight = 15;
-            this.queueToDevice.Location = new System.Drawing.Point(8, 25);
+            this.queueToDevice.Location = new System.Drawing.Point(4, 25);
             this.queueToDevice.Name = "queueToDevice";
-            this.queueToDevice.Size = new System.Drawing.Size(370, 154);
+            this.queueToDevice.Size = new System.Drawing.Size(378, 19);
             this.queueToDevice.TabIndex = 30;
             // 
             // pnlSettings
@@ -588,39 +607,15 @@ namespace ComputingSystem
             this.pnlSettings.Controls.Add(this.groupBox3);
             this.pnlSettings.Location = new System.Drawing.Point(8, 2);
             this.pnlSettings.Name = "pnlSettings";
-            this.pnlSettings.Size = new System.Drawing.Size(785, 145);
+            this.pnlSettings.Size = new System.Drawing.Size(785, 126);
             this.pnlSettings.TabIndex = 25;
-            // 
-            // timer
-            // 
-            this.timer.Enabled = true;
-            this.timer.Interval = 700;
-            // 
-            // groupBox14
-            // 
-            this.groupBox14.Controls.Add(this.CPUUtilization);
-            this.groupBox14.Location = new System.Drawing.Point(11, 452);
-            this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(183, 43);
-            this.groupBox14.TabIndex = 46;
-            this.groupBox14.TabStop = false;
-            this.groupBox14.Text = "Загруженность процессора";
-            // 
-            // CPUUtilization
-            // 
-            this.CPUUtilization.AutoSize = true;
-            this.CPUUtilization.Location = new System.Drawing.Point(8, 19);
-            this.CPUUtilization.Name = "CPUUtilization";
-            this.CPUUtilization.Size = new System.Drawing.Size(13, 15);
-            this.CPUUtilization.TabIndex = 0;
-            this.CPUUtilization.Text = "0";
             // 
             // groupBox15
             // 
             this.groupBox15.Controls.Add(this.lblThroughput);
-            this.groupBox15.Location = new System.Drawing.Point(200, 452);
+            this.groupBox15.Location = new System.Drawing.Point(193, 466);
             this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(143, 43);
+            this.groupBox15.Size = new System.Drawing.Size(143, 38);
             this.groupBox15.TabIndex = 47;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Производительность";
@@ -634,22 +629,166 @@ namespace ComputingSystem
             this.lblThroughput.TabIndex = 0;
             this.lblThroughput.Text = "0";
             // 
+            // groupBox14
+            // 
+            this.groupBox14.Controls.Add(this.CPUUtilization);
+            this.groupBox14.Location = new System.Drawing.Point(12, 466);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(174, 38);
+            this.groupBox14.TabIndex = 46;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "Загруженность процессора";
+            // 
+            // CPUUtilization
+            // 
+            this.CPUUtilization.AutoSize = true;
+            this.CPUUtilization.Location = new System.Drawing.Point(8, 19);
+            this.CPUUtilization.Name = "CPUUtilization";
+            this.CPUUtilization.Size = new System.Drawing.Size(13, 15);
+            this.CPUUtilization.TabIndex = 0;
+            this.CPUUtilization.Text = "0";
+            // 
+            // timer
+            // 
+            this.timer.Enabled = true;
+            this.timer.Interval = 700;
+            // 
+            // groupBox16
+            // 
+            this.groupBox16.Controls.Add(this.queueToDevice2);
+            this.groupBox16.Controls.Add(this.label15);
+            this.groupBox16.Location = new System.Drawing.Point(404, 296);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Size = new System.Drawing.Size(385, 51);
+            this.groupBox16.TabIndex = 49;
+            this.groupBox16.TabStop = false;
+            // 
+            // queueToDevice2
+            // 
+            this.queueToDevice2.FormattingEnabled = true;
+            this.queueToDevice2.ItemHeight = 15;
+            this.queueToDevice2.Location = new System.Drawing.Point(4, 25);
+            this.queueToDevice2.Name = "queueToDevice2";
+            this.queueToDevice2.Size = new System.Drawing.Size(378, 19);
+            this.queueToDevice2.TabIndex = 30;
+            // 
+            // label15
+            // 
+            this.label15.Location = new System.Drawing.Point(3, 1);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(259, 16);
+            this.label15.TabIndex = 29;
+            this.label15.Text = "Очередь к внешнему устройству";
+            // 
+            // groupBox17
+            // 
+            this.groupBox17.Controls.Add(this.label16);
+            this.groupBox17.Controls.Add(this.DeviceText2);
+            this.groupBox17.Location = new System.Drawing.Point(404, 242);
+            this.groupBox17.Name = "groupBox17";
+            this.groupBox17.Size = new System.Drawing.Size(385, 50);
+            this.groupBox17.TabIndex = 48;
+            this.groupBox17.TabStop = false;
+            // 
+            // label16
+            // 
+            this.label16.Location = new System.Drawing.Point(6, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(179, 15);
+            this.label16.TabIndex = 27;
+            this.label16.Text = "Внешнее устройство";
+            // 
+            // DeviceText2
+            // 
+            this.DeviceText2.Location = new System.Drawing.Point(4, 20);
+            this.DeviceText2.Name = "DeviceText2";
+            this.DeviceText2.ReadOnly = true;
+            this.DeviceText2.Size = new System.Drawing.Size(378, 23);
+            this.DeviceText2.TabIndex = 3;
+            // 
+            // groupBox18
+            // 
+            this.groupBox18.Controls.Add(this.queueToDevice3);
+            this.groupBox18.Controls.Add(this.label17);
+            this.groupBox18.Location = new System.Drawing.Point(404, 404);
+            this.groupBox18.Name = "groupBox18";
+            this.groupBox18.Size = new System.Drawing.Size(385, 51);
+            this.groupBox18.TabIndex = 51;
+            this.groupBox18.TabStop = false;
+            // 
+            // queueToDevice3
+            // 
+            this.queueToDevice3.FormattingEnabled = true;
+            this.queueToDevice3.ItemHeight = 15;
+            this.queueToDevice3.Location = new System.Drawing.Point(4, 25);
+            this.queueToDevice3.Name = "queueToDevice3";
+            this.queueToDevice3.Size = new System.Drawing.Size(378, 19);
+            this.queueToDevice3.TabIndex = 30;
+            // 
+            // label17
+            // 
+            this.label17.Location = new System.Drawing.Point(3, 1);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(259, 16);
+            this.label17.TabIndex = 29;
+            this.label17.Text = "Очередь к внешнему устройству";
+            // 
+            // groupBox19
+            // 
+            this.groupBox19.Controls.Add(this.label18);
+            this.groupBox19.Controls.Add(this.DeviceText3);
+            this.groupBox19.Location = new System.Drawing.Point(404, 350);
+            this.groupBox19.Name = "groupBox19";
+            this.groupBox19.Size = new System.Drawing.Size(385, 50);
+            this.groupBox19.TabIndex = 50;
+            this.groupBox19.TabStop = false;
+            // 
+            // label18
+            // 
+            this.label18.Location = new System.Drawing.Point(6, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(179, 15);
+            this.label18.TabIndex = 27;
+            this.label18.Text = "Внешнее устройство";
+            // 
+            // DeviceText3
+            // 
+            this.DeviceText3.Location = new System.Drawing.Point(4, 20);
+            this.DeviceText3.Name = "DeviceText3";
+            this.DeviceText3.ReadOnly = true;
+            this.DeviceText3.Size = new System.Drawing.Size(378, 23);
+            this.DeviceText3.TabIndex = 3;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(741, 461);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(48, 43);
+            this.pictureBox1.TabIndex = 52;
+            this.pictureBox1.TabStop = false;
+            // 
             // FrmDetailed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(795, 509);
+            this.ClientSize = new System.Drawing.Size(795, 514);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.groupBox18);
+            this.Controls.Add(this.groupBox19);
+            this.Controls.Add(this.groupBox16);
+            this.Controls.Add(this.groupBox17);
             this.Controls.Add(this.groupBox15);
             this.Controls.Add(this.end);
-            this.Controls.Add(this.groupBox14);
             this.Controls.Add(this.workingCycle);
+            this.Controls.Add(this.groupBox14);
             this.Controls.Add(this.pnlSettings);
             this.Controls.Add(this.save);
             this.Controls.Add(this.groupBox12);
             this.Controls.Add(this.groupBox11);
+            this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox10);
             this.Controls.Add(this.groupBox9);
-            this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox7);
             this.Name = "FrmDetailed";
             this.Text = "Системное программное обеспечение: курсовая работа";
@@ -676,10 +815,17 @@ namespace ComputingSystem
             this.groupBox12.ResumeLayout(false);
             this.pnlSettings.ResumeLayout(false);
             this.pnlSettings.PerformLayout();
-            this.groupBox14.ResumeLayout(false);
-            this.groupBox14.PerformLayout();
             this.groupBox15.ResumeLayout(false);
             this.groupBox15.PerformLayout();
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox14.PerformLayout();
+            this.groupBox16.ResumeLayout(false);
+            this.groupBox17.ResumeLayout(false);
+            this.groupBox17.PerformLayout();
+            this.groupBox18.ResumeLayout(false);
+            this.groupBox19.ResumeLayout(false);
+            this.groupBox19.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -736,6 +882,19 @@ namespace ComputingSystem
         public System.Windows.Forms.Label CPUUtilization;
         private System.Windows.Forms.GroupBox groupBox15;
         public System.Windows.Forms.Label lblThroughput;
+        private System.Windows.Forms.GroupBox groupBox16;
+        public System.Windows.Forms.ListBox queueToDevice2;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.GroupBox groupBox17;
+        private System.Windows.Forms.Label label16;
+        public System.Windows.Forms.TextBox DeviceText2;
+        private System.Windows.Forms.GroupBox groupBox18;
+        public System.Windows.Forms.ListBox queueToDevice3;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.GroupBox groupBox19;
+        private System.Windows.Forms.Label label18;
+        public System.Windows.Forms.TextBox DeviceText3;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
